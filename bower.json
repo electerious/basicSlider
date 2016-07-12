@@ -1,0 +1,25 @@
+{
+  "name": "basicSlider",
+  "authors": [
+    "Tobias Reich <tobias@electerious.com>"
+  ],
+  "description": "A slider in its purest form.",
+  "main": "dist/basicSlider.min.js",
+  "keywords": [
+    "slider",
+    "slides",
+    "carousel"
+  ],
+  "ignore": [
+    "**/.*",
+    "demos",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/electerious/basicSlider",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electerious/basicSlider.git"
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicSlider Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="../dist/basicSlider.min.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			text-align: center;
+			min-height: 100%;
+			font-size: 14px;
+			color: white;
+		}
+
+		.slider {
+			color: red;
+			background: black;
+		}
+
+	</style>
+
+	<div class="slider">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<script src="../dist/basicSlider.min.js"></script>
+
+	<script>
+
+		window.slider = basicSlider.create(
+			document.querySelector('.slider'),
+			Array.prototype.map.call(document.querySelectorAll('.slider > div'), function(slide) { return slide.innerHTML })
+		)
+
+	</script>
+
+</html>

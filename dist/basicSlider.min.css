@@ -1,0 +1,1 @@
+.basicSlider{position:relative;width:100%;height:100%;overflow:hidden}.basicSlider__slides{position:relative;display:-ms-flexbox;display:flex;height:100%;transition:transform .4s cubic-bezier(.51,.92,.24,1);will-change:transform}.basicSlider__slide{-ms-flex:0 1 auto;flex:0 1 auto;width:100%;height:100%}

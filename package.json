@@ -1,0 +1,33 @@
+{
+  "name": "basicslider",
+  "moduleName": "basicSlider",
+  "version": "0.0.1",
+  "authors": [
+    "Tobias Reich <tobias@electerious.com>"
+  ],
+  "description": "A slider in its purest form.",
+  "main": "dist/basicSlider.min.js",
+  "keywords": [
+    "slider",
+    "slides",
+    "carousel"
+  ],
+  "scripts": {
+    "start": "gulp watch",
+    "compile": "gulp"
+  },
+  "license": "MIT",
+  "homepage": "http://github.com/electerious/basicSlider",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electerious/basicSlider.git"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "devDependencies": {
+    "@electerious/basictasks": "1.4.0",
+    "gulp": "^3.9.1"
+  }
+}
