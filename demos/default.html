@@ -30,7 +30,29 @@
 
 	</style>
 
-	<div class="slider">
+	<div class="slider" data-id="0">
+		<div>Default</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<div class="slider" data-id="1">
+		<div>Without arrows</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<div class="slider" data-id="2">
+		<div>Callbacks</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<div class="slider" data-id="3">
+		<div>Blocking Callback</div>
 		<div>1</div>
 		<div>2</div>
 		<div>3</div>
@@ -40,9 +62,34 @@
 
 	<script>
 
-		window.slider = basicSlider.create(
-			document.querySelector('.slider'),
-			Array.prototype.map.call(document.querySelectorAll('.slider > div'), function(slide) { return slide.innerHTML })
+		basicSlider.create(
+			document.querySelector('.slider[data-id="0"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="0"] > div'), function(slide) { return slide.innerHTML })
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="1"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="1"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				arrows: false
+			}
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="2"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="2"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				beforeChange: function(instance, newIndex, oldIndex) { console.log('beforeChange', instance, newIndex, oldIndex) },
+				afterChange: function(instance, newIndex, oldIndex) { console.log('afterChange', instance, newIndex, oldIndex) }
+			}
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="3"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="3"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				beforeChange: function() { return false }
+			}
 		)
 
 	</script>

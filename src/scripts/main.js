@@ -30,18 +30,23 @@ const validate = function(opts = {}) {
 
 	opts = Object.assign({}, opts)
 
+	if (opts.arrows!==false) opts.arrows = true
+
+	if (typeof opts.beforeChange !== 'function') opts.beforeChange = () => {}
+	if (typeof opts.afterChange !== 'function')  opts.afterChange = () => {}
+
 	return opts
 
 }
 
-const renderSlider = function(renderedElems) {
+const renderSlider = function(elems, opts) {
 
 	const {
 		sliderElem,
 		containerElem,
 		arrowLeftElem,
 		arrowRightElem
-	} = renderedElems
+	} = elems
 
 	// Add the default class
 	sliderElem.classList.add('basicSlider')
@@ -51,8 +56,12 @@ const renderSlider = function(renderedElems) {
 
 	// Insert slider content
 	sliderElem.appendChild(containerElem)
-	sliderElem.appendChild(arrowLeftElem)
-	sliderElem.appendChild(arrowRightElem)
+
+	// Insert arrows at the end so they stay clickable
+	if (opts.arrows===true) {
+		sliderElem.appendChild(arrowLeftElem)
+		sliderElem.appendChild(arrowRightElem)
+	}
 
 }
 
@@ -179,7 +188,7 @@ export const create = function(elem, slides, opts) {
 			containerElem  : containerElem,
 			arrowLeftElem  : arrowLeftElem,
 			arrowRightElem : arrowRightElem
-		})
+		}, opts)
 
 	}
 
@@ -193,20 +202,46 @@ export const create = function(elem, slides, opts) {
 	const _current = () => current(elem, c())
 
 	// Navigate to a given slide
-	const _goto = (index) => {
+	// Use c() as the default oldIndex as the counter hasn't been recreated yet,
+	// when called through the API. Internal functions can set a custom oldIndex.
+	const _goto = (newIndex, oldIndex = c()) => {
+
+		// Run beforePrev event
+		// Stop execution when function returns false
+		if (opts.beforeChange(instance, newIndex, oldIndex)===false) return false
 
 		// Recreate counter with new initial value
-		c = counter(min, max, index)
+		c = counter(min, max, newIndex)
 
-		return goto(elem, c(), _length())
+		// Switch to new slide
+		goto(elem, c(), _length())
+
+		// Run afterShow event
+		opts.afterChange(instance, newIndex, oldIndex)
 
 	}
 
 	// Navigate to the previous slide
-	const _prev = () => _goto(c(-1))
+	const _prev = () => {
+
+		// Store old index before modifying the counter
+		const oldIndex = c()
+		const newIndex = c(-1)
+
+		_goto(newIndex, oldIndex)
+
+	}
 
 	// Navigate to the next slide
-	const _next = () => _goto(c(1))
+	const _next = () => {
+
+		// Store old index before modifying the counter
+		const oldIndex = c()
+		const newIndex = c(1)
+
+		_goto(newIndex, oldIndex)
+
+	}
 
 	// Assign instance to a variable so the instance can be used
 	// elsewhere in the current function
