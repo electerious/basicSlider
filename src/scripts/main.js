@@ -48,7 +48,7 @@ const renderSlider = function(elems, opts) {
 		arrowRightElem
 	} = elems
 
-	// Add the default class
+	// Add default class
 	sliderElem.classList.add('basicSlider')
 
 	// Clear existing content
@@ -69,7 +69,7 @@ const renderContainer = function(slidesElem) {
 
 	const elem = document.createElement('div')
 
-	// Add the default class
+	// Add default class
 	elem.classList.add('basicSlider__container')
 
 	// Insert container content
@@ -83,7 +83,7 @@ const renderSlides = function(slideElems = []) {
 
 	const elem = document.createElement('div')
 
-	// Add the default class
+	// Add default class
 	elem.classList.add('basicSlider__slides')
 
 	// Set width to the number of slides
@@ -91,7 +91,6 @@ const renderSlides = function(slideElems = []) {
 	elem.style.width = `${ slideElems.length * 100 }%`
 
 	// Add slides
-	// console.log(slideElems);
 	slideElems.forEach((slideElem) => elem.appendChild(slideElem))
 
 	return elem
@@ -102,7 +101,7 @@ const renderSlide = function(html = '') {
 
 	const elem = document.createElement('div')
 
-	// Add the default class
+	// Add default class
 	elem.classList.add('basicSlider__slide')
 
 	// Add slide content
