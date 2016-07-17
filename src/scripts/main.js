@@ -31,6 +31,7 @@ const validate = function(opts = {}) {
 	opts = Object.assign({}, opts)
 
 	if (opts.arrows!==false) opts.arrows = true
+	if (opts.dots!==false)   opts.dots = true
 
 	if (typeof opts.beforeChange !== 'function') opts.beforeChange = () => {}
 	if (typeof opts.afterChange !== 'function')  opts.afterChange = () => {}
@@ -43,9 +44,10 @@ const renderSlider = function(elems, opts) {
 
 	const {
 		sliderElem,
-		containerElem,
 		arrowLeftElem,
-		arrowRightElem
+		arrowRightElem,
+		dotsElem,
+		containerElem
 	} = elems
 
 	// Add default class
@@ -62,6 +64,51 @@ const renderSlider = function(elems, opts) {
 		sliderElem.appendChild(arrowLeftElem)
 		sliderElem.appendChild(arrowRightElem)
 	}
+
+	// Insert dots at the end so they stay clickable
+	if (opts.dots===true) {
+		sliderElem.appendChild(dotsElem)
+	}
+
+}
+
+const renderArrow = function(direction) {
+
+	const elem = document.createElement('button')
+
+	// Only allow left and right arrows
+	direction = (direction===ARROW_LEFT ? 'left' : 'right')
+
+	// Add the default and direction class
+	elem.classList.add('basicSlider__arrow')
+	elem.classList.add(`basicSlider__arrow--${ direction }`)
+
+	return elem
+
+}
+
+const renderDots = function(dotElems = []) {
+
+	const elem = document.createElement('div')
+
+	// Add default class
+	elem.classList.add('basicSlider__dots')
+
+	// Add dots
+	dotElems.forEach((dotElem) => elem.appendChild(dotElem))
+
+	return elem
+
+}
+
+const renderDot = function() {
+
+	const elem = document.createElement('button')
+
+	// Add default class
+	elem.classList.add('basicSlider__dot')
+
+	return elem
 
 }
 
@@ -111,21 +158,6 @@ const renderSlide = function(html = '') {
 
 }
 
-const renderArrow = function(direction) {
-
-	const elem = document.createElement('button')
-
-	// Only allow left and right arrows
-	direction = (direction===ARROW_LEFT ? 'left' : 'right')
-
-	// Add the default and direction class
-	elem.classList.add('basicSlider__arrow')
-	elem.classList.add(`basicSlider__arrow--${ direction }`)
-
-	return elem
-
-}
-
 const current = function(elem, index) {
 
 	return {
@@ -163,6 +195,8 @@ export const create = function(elem, slides, opts) {
 
 		// Render all elements
 		const slideElems     = slides.map(renderSlide)
+		const dotElems       = slides.map(renderDot)
+		const dotsElem       = renderDots(dotElems)
 		const slidesElem     = renderSlides(slideElems)
 		const containerElem  = renderContainer(slidesElem)
 		const arrowLeftElem  = renderArrow(ARROW_LEFT)
@@ -180,13 +214,24 @@ export const create = function(elem, slides, opts) {
 			stopEvent(e)
 		}
 
+		// Bind dot events
+		dotElems.forEach((dotElem, index) => {
+
+			dotElem.onclick = (e) => {
+				_goto(index)
+				stopEvent(e)
+			}
+
+		})
+
 		// Modify the target elem
 		// Adds required classes and replaces its content
 		renderSlider({
 			sliderElem     : elem,
-			containerElem  : containerElem,
 			arrowLeftElem  : arrowLeftElem,
-			arrowRightElem : arrowRightElem
+			arrowRightElem : arrowRightElem,
+			dotsElem       : dotsElem,
+			containerElem  : containerElem
 		}, opts)
 
 	}
