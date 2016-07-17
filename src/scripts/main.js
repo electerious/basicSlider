@@ -1,3 +1,6 @@
+const ARROW_LEFT  = 'left'
+const ARROW_RIGHT = 'right'
+
 const counter = function(min, max, initial) {
 
 	let index  = initial - min
@@ -31,22 +34,58 @@ const validate = function(opts = {}) {
 
 }
 
-const renderSlider = function(elem, slides = []) {
+const renderSlider = function(renderedElems) {
+
+	const {
+		sliderElem,
+		containerElem,
+		arrowLeftElem,
+		arrowRightElem
+	} = renderedElems
 
 	// Add the default class
-	elem.classList.add('basicSlider')
+	sliderElem.classList.add('basicSlider')
 
-	// Define inline-styles
-	const styles = `
-		width: ${ slides.length * 100 }%;
-	`
+	// Clear existing content
+	sliderElem.innerHTML = ''
 
-	// Add inner content
-	elem.innerHTML = `
-		<div class="basicSlider__slides" style="${ styles }">
-			${ slides.map((slide) => slide.outerHTML).join('') }
-		</div>
-	`
+	// Insert slider content
+	sliderElem.appendChild(containerElem)
+	sliderElem.appendChild(arrowLeftElem)
+	sliderElem.appendChild(arrowRightElem)
+
+}
+
+const renderContainer = function(slidesElem) {
+
+	const elem = document.createElement('div')
+
+	// Add the default class
+	elem.classList.add('basicSlider__container')
+
+	// Insert container content
+	elem.appendChild(slidesElem)
+
+	return elem
+
+}
+
+const renderSlides = function(slideElems = []) {
+
+	const elem = document.createElement('div')
+
+	// Add the default class
+	elem.classList.add('basicSlider__slides')
+
+	// Set width to the number of slides
+	// Each slide should have a width of 100% available
+	elem.style.width = `${ slideElems.length * 100 }%`
+
+	// Add slides
+	// console.log(slideElems);
+	slideElems.forEach((slideElem) => elem.appendChild(slideElem))
+
+	return elem
 
 }
 
@@ -57,12 +96,23 @@ const renderSlide = function(html = '') {
 	// Add the default class
 	elem.classList.add('basicSlider__slide')
 
-	// Add slides content
-	elem.innerHTML = `
-		<div class="basicSlider__slide">
-			${ html }
-		</div>
-	`
+	// Add slide content
+	elem.innerHTML = html
+
+	return elem
+
+}
+
+const renderArrow = function(direction) {
+
+	const elem = document.createElement('button')
+
+	// Only allow left and right arrows
+	direction = (direction===ARROW_LEFT ? 'left' : 'right')
+
+	// Add the default and direction class
+	elem.classList.add('basicSlider__arrow')
+	elem.classList.add(`basicSlider__arrow--${ direction }`)
 
 	return elem
 
@@ -103,12 +153,33 @@ export const create = function(elem, slides, opts) {
 		max = _length() - 1
 		c   = counter(min, max, min)
 
-		// Render the slide elements
-		const slideElems = slides.map(renderSlide)
+		// Render all elements
+		const slideElems     = slides.map(renderSlide)
+		const slidesElem     = renderSlides(slideElems)
+		const containerElem  = renderContainer(slidesElem)
+		const arrowLeftElem  = renderArrow(ARROW_LEFT)
+		const arrowRightElem = renderArrow(ARROW_RIGHT)
+
+		// Bind prev button event
+		arrowLeftElem.onclick = (e) => {
+			_prev()
+			stopEvent(e)
+		}
+
+		// Bind next button event
+		arrowRightElem.onclick = (e) => {
+			_next()
+			stopEvent(e)
+		}
 
 		// Modify the target elem
 		// Adds required classes and replaces its content
-		renderSlider(elem, slideElems)
+		renderSlider({
+			sliderElem     : elem,
+			containerElem  : containerElem,
+			arrowLeftElem  : arrowLeftElem,
+			arrowRightElem : arrowRightElem
+		})
 
 	}
 
