@@ -58,6 +58,27 @@
 		<div>3</div>
 	</div>
 
+	<div class="slider" data-id="4">
+		<div>0</div>
+		<div>Start with different index</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<div class="slider" data-id="5">
+		<div>Without dots</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
+	<div class="slider" data-id="6">
+		<div>Without arrows and dots</div>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+
 	<script src="../dist/basicSlider.min.js"></script>
 
 	<script>
@@ -89,6 +110,31 @@
 			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="3"] > div'), function(slide) { return slide.innerHTML }),
 			{
 				beforeChange: function() { return false }
+			}
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="4"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="4"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				index: 1
+			}
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="5"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="5"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				dots: false
+			}
+		)
+
+		basicSlider.create(
+			document.querySelector('.slider[data-id="6"]'),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="6"] > div'), function(slide) { return slide.innerHTML }),
+			{
+				arrows: false,
+				dots: false
 			}
 		)
 

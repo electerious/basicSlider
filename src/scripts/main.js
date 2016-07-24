@@ -30,6 +30,8 @@ const validate = function(opts = {}) {
 
 	opts = Object.assign({}, opts)
 
+	if (Number.isFinite(opts.index)===false) opts.index = 0
+
 	if (opts.arrows!==false) opts.arrows = true
 	if (opts.dots!==false)   opts.dots = true
 
@@ -40,39 +42,38 @@ const validate = function(opts = {}) {
 
 }
 
-const renderSlider = function(elems, opts) {
+const renderSlider = function(elem, elemsCollection, opts) {
 
 	const {
-		sliderElem,
 		arrowLeftElem,
 		arrowRightElem,
 		dotsElem,
 		containerElem
-	} = elems
+	} = elemsCollection
 
 	// Add default class
-	sliderElem.classList.add('basicSlider')
+	elem.classList.add('basicSlider')
 
 	// Clear existing content
-	sliderElem.innerHTML = ''
+	elem.innerHTML = ''
 
 	// Insert slider content
-	sliderElem.appendChild(containerElem)
+	elem.appendChild(containerElem)
 
 	// Insert arrows at the end so they stay clickable
 	if (opts.arrows===true) {
-		sliderElem.appendChild(arrowLeftElem)
-		sliderElem.appendChild(arrowRightElem)
+		elem.appendChild(arrowLeftElem)
+		elem.appendChild(arrowRightElem)
 	}
 
 	// Insert dots at the end so they stay clickable
 	if (opts.dots===true) {
-		sliderElem.appendChild(dotsElem)
+		elem.appendChild(dotsElem)
 	}
 
 }
 
-const renderArrow = function(direction) {
+const renderArrow = function(direction, fn) {
 
 	const elem = document.createElement('button')
 
@@ -82,6 +83,12 @@ const renderArrow = function(direction) {
 	// Add the default and direction class
 	elem.classList.add('basicSlider__arrow')
 	elem.classList.add(`basicSlider__arrow--${ direction }`)
+
+	// Bind click event
+	elem.onclick = (e) => {
+		fn()
+		stopEvent(e)
+	}
 
 	return elem
 
@@ -101,12 +108,18 @@ const renderDots = function(dotElems = []) {
 
 }
 
-const renderDot = function() {
+const renderDot = function(fn) {
 
 	const elem = document.createElement('button')
 
 	// Add default class
 	elem.classList.add('basicSlider__dot')
+
+	// Bind click event
+	elem.onclick = (e) => {
+		fn()
+		stopEvent(e)
+	}
 
 	return elem
 
@@ -158,20 +171,17 @@ const renderSlide = function(html = '') {
 
 }
 
-const current = function(elem, index) {
+const setSlide = function(elemsCollection, index, length) {
 
-	return {
-		index   : index,
-		element : elem.querySelector(`.basicSlider__slide:nth-child(${ index + 1 })`)
-	}
-
-}
-
-const goto = function(elem, index, length) {
-
-	const slidesElem = elem.querySelector('.basicSlider__slides')
+	const {
+		slidesElem,
+		dotElems
+	} = elemsCollection
 
 	slidesElem.style.transform = `translateX(-${ (100 / length) * index }%)`
+
+	dotElems.forEach((dotElem) => dotElem.classList.remove('active'))
+	dotElems[index].classList.add('active')
 
 }
 
@@ -180,59 +190,33 @@ export const create = function(elem, slides, opts) {
 	// Validate options
 	opts = validate(opts)
 
-	// Number of slides
-	let min = null
-	let max = null
-	let c   = null
+	// Slide index counter
+	let c = null
+
+	// Object containing references to all rendered elements
+	const elemsCollection = {}
 
 	// Initializes the slider
 	const init = () => {
 
-		// Set number of slides and create counter
-		min = 0
-		max = _length() - 1
-		c   = counter(min, max, min)
+		// Initialize slide counter
+		c = counter(0, _length() - 1, opts.index)
 
 		// Render all elements
-		const slideElems     = slides.map(renderSlide)
-		const dotElems       = slides.map(renderDot)
-		const dotsElem       = renderDots(dotElems)
-		const slidesElem     = renderSlides(slideElems)
-		const containerElem  = renderContainer(slidesElem)
-		const arrowLeftElem  = renderArrow(ARROW_LEFT)
-		const arrowRightElem = renderArrow(ARROW_RIGHT)
+		elemsCollection.slideElems     = slides.map(renderSlide)
+		elemsCollection.dotElems       = slides.map((_, i) => renderDot(_goto.bind(null, i)))
+		elemsCollection.dotsElem       = renderDots(elemsCollection.dotElems)
+		elemsCollection.slidesElem     = renderSlides(elemsCollection.slideElems)
+		elemsCollection.containerElem  = renderContainer(elemsCollection.slidesElem)
+		elemsCollection.arrowLeftElem  = renderArrow(ARROW_LEFT, _prev)
+		elemsCollection.arrowRightElem = renderArrow(ARROW_RIGHT, _next)
 
-		// Bind prev button event
-		arrowLeftElem.onclick = (e) => {
-			_prev()
-			stopEvent(e)
-		}
-
-		// Bind next button event
-		arrowRightElem.onclick = (e) => {
-			_next()
-			stopEvent(e)
-		}
-
-		// Bind dot events
-		dotElems.forEach((dotElem, index) => {
-
-			dotElem.onclick = (e) => {
-				_goto(index)
-				stopEvent(e)
-			}
-
-		})
+		// Set initial slide
+		_goto(c(), null)
 
 		// Modify the target elem
 		// Adds required classes and replaces its content
-		renderSlider({
-			sliderElem     : elem,
-			arrowLeftElem  : arrowLeftElem,
-			arrowRightElem : arrowRightElem,
-			dotsElem       : dotsElem,
-			containerElem  : containerElem
-		}, opts)
+		renderSlider(elem, elemsCollection, opts)
 
 	}
 
@@ -243,7 +227,7 @@ export const create = function(elem, slides, opts) {
 	const _length = () => slides.length
 
 	// Returns the current slide index and element
-	const _current = () => current(elem, c())
+	const _current = () => c()
 
 	// Navigate to a given slide
 	// Use c() as the default oldIndex as the counter hasn't been recreated yet,
@@ -255,10 +239,10 @@ export const create = function(elem, slides, opts) {
 		if (opts.beforeChange(instance, newIndex, oldIndex)===false) return false
 
 		// Recreate counter with new initial value
-		c = counter(min, max, newIndex)
+		c = counter(0, _length() - 1, newIndex)
 
 		// Switch to new slide
-		goto(elem, c(), _length())
+		setSlide(elemsCollection, c(), _length())
 
 		// Run afterShow event
 		opts.afterChange(instance, newIndex, oldIndex)

@@ -1,6 +1,7 @@
 .basicSlider {
 
 	position: relative;
+	margin: 0 0 2rem 0;
 	width: 100%;
 
 	// Arrow -------------------------------------------------------------- //
@@ -33,14 +34,26 @@
 	// Dots -------------------------------------------------------------- //
 	&__dots {
 		position: absolute;
-		bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		top: 100%;
 	}
 
 	// Dot -------------------------------------------------------------- //
 	&__dot {
+		flex: 0 0 auto;
+		border: none;
+		outline: none;
+		background: transparent;
+
+		&::before {
+			content: '·'
+		}
 
 		&.active {
-
+			font-size: 2em;
 		}
 	}
 
