@@ -4,7 +4,10 @@
     "Tobias Reich <tobias@electerious.com>"
   ],
   "description": "A slider in its purest form.",
-  "main": "dist/basicSlider.min.js",
+  "main": [
+    "dist/basicSlider.min.css",
+    "dist/basicSlider.min.js"
+  ],
   "keywords": [
     "slider",
     "slides",
