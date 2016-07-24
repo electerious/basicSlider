@@ -42,14 +42,14 @@ const validate = function(opts = {}) {
 
 }
 
-const renderSlider = function(elem, elemsCollection, opts) {
+const renderSlider = function(elem, refs, opts) {
 
 	const {
 		arrowLeftElem,
 		arrowRightElem,
 		dotsElem,
 		containerElem
-	} = elemsCollection
+	} = refs
 
 	// Add default class
 	elem.classList.add('basicSlider')
@@ -171,17 +171,43 @@ const renderSlide = function(html = '') {
 
 }
 
-const setSlide = function(elemsCollection, index, length) {
-
-	const {
-		slidesElem,
-		dotElems
-	} = elemsCollection
+const setSlide = function(dotElems, slidesElem, index, length) {
 
 	slidesElem.style.transform = `translateX(-${ (100 / length) * index }%)`
 
 	dotElems.forEach((dotElem) => dotElem.classList.remove('active'))
 	dotElems[index].classList.add('active')
+
+}
+
+const init = function(elem, slides, instance, opts) {
+
+	// Initialize slide counter
+	const c = counter(0, instance.length() - 1, opts.index)
+
+	// Object containing references to all rendered elements
+	const refs = {}
+
+	// Render all elements
+	refs.slideElems     = slides.map(renderSlide)
+	refs.dotElems       = slides.map((_, i) => renderDot(instance.goto.bind(null, i)))
+	refs.dotsElem       = renderDots(refs.dotElems)
+	refs.slidesElem     = renderSlides(refs.slideElems)
+	refs.containerElem  = renderContainer(refs.slidesElem)
+	refs.arrowLeftElem  = renderArrow(ARROW_LEFT, instance.prev)
+	refs.arrowRightElem = renderArrow(ARROW_RIGHT, instance.next)
+
+	// Set initial slide
+	setSlide(refs.dotElems, refs.slidesElem, c(), instance.length())
+
+	// Modify the target elem
+	// Adds required classes and replaces its content
+	renderSlider(elem, refs, opts)
+
+	return {
+		c,
+		refs
+	}
 
 }
 
@@ -194,31 +220,7 @@ export const create = function(elem, slides, opts) {
 	let c = null
 
 	// Object containing references to all rendered elements
-	const elemsCollection = {}
-
-	// Initializes the slider
-	const init = () => {
-
-		// Initialize slide counter
-		c = counter(0, _length() - 1, opts.index)
-
-		// Render all elements
-		elemsCollection.slideElems     = slides.map(renderSlide)
-		elemsCollection.dotElems       = slides.map((_, i) => renderDot(_goto.bind(null, i)))
-		elemsCollection.dotsElem       = renderDots(elemsCollection.dotElems)
-		elemsCollection.slidesElem     = renderSlides(elemsCollection.slideElems)
-		elemsCollection.containerElem  = renderContainer(elemsCollection.slidesElem)
-		elemsCollection.arrowLeftElem  = renderArrow(ARROW_LEFT, _prev)
-		elemsCollection.arrowRightElem = renderArrow(ARROW_RIGHT, _next)
-
-		// Set initial slide
-		_goto(c(), null)
-
-		// Modify the target elem
-		// Adds required classes and replaces its content
-		renderSlider(elem, elemsCollection, opts)
-
-	}
+	let refs = null
 
 	// Returns the slider element
 	const _element = () => elem
@@ -242,7 +244,7 @@ export const create = function(elem, slides, opts) {
 		c = counter(0, _length() - 1, newIndex)
 
 		// Switch to new slide
-		setSlide(elemsCollection, c(), _length())
+		setSlide(refs.dotElems, refs.slidesElem, c(), _length())
 
 		// Run afterShow event
 		opts.afterChange(instance, newIndex, oldIndex)
@@ -283,7 +285,12 @@ export const create = function(elem, slides, opts) {
 	}
 
 	// Initialize slider
-	init()
+	const initial = init(elem, slides, instance, opts)
+
+	// Use returned values for initialization as those will be used
+	// in functions of the instance
+	c    = initial.c
+	refs = initial.refs
 
 	return instance
 
