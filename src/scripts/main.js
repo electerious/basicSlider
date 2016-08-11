@@ -1,23 +1,7 @@
 const ARROW_LEFT  = 'left'
 const ARROW_RIGHT = 'right'
 
-const counter = function(min, max, initial) {
-
-	let index  = initial - min
-	let length = max - min + 1
-
-	return (modifier = 0) => {
-
-		index = (index + modifier) % length
-
-		if (index>=0) index = 0 + index
-		if (index<0)  index = length + index
-
-		return min + index
-
-	}
-
-}
+import counter from 'count-between'
 
 const stopEvent = function(e) {
 
