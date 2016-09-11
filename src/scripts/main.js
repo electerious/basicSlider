@@ -212,7 +212,7 @@ export const create = function(elem, slides, opts) {
 	// Return the total number of slides
 	const _length = () => slides.length
 
-	// Returns the current slide index and element
+	// Returns the current slide index
 	const _current = () => c()
 
 	// Navigate to a given slide
