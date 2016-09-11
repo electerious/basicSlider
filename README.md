@@ -16,7 +16,7 @@ A slider in its purest form.
 
 | Name | Description | Link |
 |:-----------|:------------|:------------|
-| Default | Includes all features, but no theme. | [Demo]() |
+| Default | Includes all features, but no theme. | [Try it on CodePen](http://codepen.io/electerious/pen/GjpXRX) |
 
 ## Features
 
