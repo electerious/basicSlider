@@ -5,8 +5,8 @@ import counter from 'count-between'
 
 const stopEvent = function(e) {
 
-	if (typeof e.stopPropagation === 'function') e.stopPropagation()
-	if (typeof e.preventDefault === 'function')  e.preventDefault()
+	if (typeof e.stopPropagation==='function') e.stopPropagation()
+	if (typeof e.preventDefault==='function')  e.preventDefault()
 
 }
 
@@ -19,8 +19,8 @@ const validate = function(opts = {}) {
 	if (opts.arrows!==false) opts.arrows = true
 	if (opts.dots!==false)   opts.dots = true
 
-	if (typeof opts.beforeChange !== 'function') opts.beforeChange = () => {}
-	if (typeof opts.afterChange !== 'function')  opts.afterChange = () => {}
+	if (typeof opts.beforeChange!=='function') opts.beforeChange = () => {}
+	if (typeof opts.afterChange!=='function')  opts.afterChange = () => {}
 
 	return opts
 
