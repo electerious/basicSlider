@@ -11,12 +11,13 @@ A slider in its purest form.
 - [API](#api)
 - [Instance API](#instance-api)
 - [Options](#options)
+- [Themes](#themes)
 
 ## Demos
 
 | Name | Description | Link |
 |:-----------|:------------|:------------|
-| Default | Includes all features, but no theme. | [Try it on CodePen](http://codepen.io/electerious/pen/GjpXRX) |
+| Default | All features with the default theme. | [Try it on CodePen](http://codepen.io/electerious/pen/GjpXRX) |
 
 ## Features
 
@@ -53,6 +54,7 @@ Include the CSS-file in the `head` and the JS-file at the end of your `body`…
 
 ```html
 <link rel="stylesheet" href="dist/basicSlider.min.css">
+<link rel="stylesheet" href="dist/themes/default.min.css">
 ```
 
 ```html
@@ -210,3 +212,11 @@ The option-object can include the following properties:
 	afterChange   : (instance, newIndex, oldIndex) => {}
 }
 ```
+
+## Themes
+
+Layout and theme are separated CSS-files. This makes it easy to style your own slider or to choose from the included themes.
+
+| Name | Demo |
+|:-----------|:------------|:------------|:------------|
+| Default theme | [Demo](http://codepen.io/electerious/pen/GjpXRX) |

@@ -1,58 +1,16 @@
 .basicSlider {
 
 	position: relative;
-	margin: 0 0 2rem 0;
 	width: 100%;
 
 	// Arrow -------------------------------------------------------------- //
 	&__arrow {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		padding: 0;
-		border: none;
-		background: transparent;
-	}
-
-	&__arrow--left {
-		left: 0;
-
-		&::before {
-			content: '←';
-		}
-	}
-
-	&__arrow--right {
-		right: 0;
-
-		&::before {
-			content: '→';
-		}
-	}
-
-	// Dots -------------------------------------------------------------- //
-	&__dots {
-		position: absolute;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		top: 100%;
+		cursor: pointer;
 	}
 
 	// Dot -------------------------------------------------------------- //
 	&__dot {
-		flex: 0 0 auto;
-		border: none;
-		background: transparent;
-
-		&::before {
-			content: '·'
-		}
-
-		&.active {
-			font-size: 2em;
-		}
+		cursor: pointer;
 	}
 
 	// Container -------------------------------------------------------------- //

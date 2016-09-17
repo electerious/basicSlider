@@ -9,14 +9,26 @@ const scripts = tasks.scripts({
 	to   : './dist'
 })
 
-const styles = tasks.styles({
-	from : './src/styles/main.scss',
-	to   : './dist'
-})
+const styles = function() {
+
+	tasks.styles({
+		from : './src/styles/main.scss',
+		to   : './dist'
+	})()
+
+	tasks.styles({
+		from : './src/styles/themes/*.scss',
+		name : (path) => path.basename += '.min',
+		to   : './dist/themes'
+	})()
+
+}
 
 const watch = function() {
+
 	gulp.watch('./src/scripts/**/*.js', [ 'scripts' ])
 	gulp.watch('./src/styles/**/*.scss', [ 'styles' ])
+
 }
 
 gulp.task('scripts', scripts)

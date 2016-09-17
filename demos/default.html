@@ -6,6 +6,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="../dist/basicSlider.min.css">
+	<link rel="stylesheet" href="../dist/themes/default.min.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,70 +18,80 @@
 		}
 
 		body {
-			text-align: center;
 			min-height: 100%;
 			font-size: 14px;
+			background: #eee;
 			color: white;
+		}
+
+		.content {
+			margin: 0 auto;
+			padding: 1rem;
+			width: 100%;
+			max-width: 800px;
+			box-sizing: border-box;
 		}
 
 		.basicSlider__slide {
-			color: white;
-			background: black;
-		}
-
-		.basicSlider__arrow {
-			color: white;
+			padding: 4rem 0;
+			text-align: center;
+			background: white;
+			color: black;
 		}
 
 	</style>
 
-	<div class="slider" data-id="0">
-		<div>Default</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+	<div class="content">
 
-	<div class="slider" data-id="1">
-		<div>Without arrows</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="slider" data-id="0">
+			<div>Default</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
 
-	<div class="slider" data-id="2">
-		<div>Callbacks</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="slider" data-id="1">
+			<div>Without arrows</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
 
-	<div class="slider" data-id="3">
-		<div>Blocking Callback</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="slider" data-id="2">
+			<div>Callbacks</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
 
-	<div class="slider" data-id="4">
-		<div>0</div>
-		<div>Start with different index</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="slider" data-id="3">
+			<div>Blocking Callback</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
 
-	<div class="slider" data-id="5">
-		<div>Without dots</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="slider" data-id="4">
+			<div>0</div>
+			<div>Start with different index</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
 
-	<div class="slider" data-id="6">
-		<div>Without arrows and dots</div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
+		<div class="slider" data-id="5">
+			<div>Without dots</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+
+		<div class="slider" data-id="6">
+			<div>Without arrows and dots</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+
 	</div>
 
 	<script src="../dist/basicSlider.min.js"></script>
