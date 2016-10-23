@@ -30,13 +30,13 @@ A slider in its purest form.
 
 ## Requirements
 
-basicSlider dependents on the following browser APIs:
+basicSlider depends on the following browser APIs:
 
 - [classList](https://dom.spec.whatwg.org/#dom-element-classlist)
 - [Flexible Box Layout Module](https://www.w3.org/TR/css3-flexbox/)
 - [Object.assign](http://www.ecma-international.org/ecma-262/6.0/#sec-object.assign)
 
-Some of these APIs are capable of being polyfilled in older browser. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.
+Some of these APIs are capable of being polyfilled in older browsers. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.
 
 ## Setup
 
@@ -50,7 +50,7 @@ bower install basicSlider
 npm install basicslider
 ```
 
-Include the CSS-file in the `head` and the JS-file at the end of your `body`…
+Include the CSS file in the `head` tag and the JS file at the end of your `body` tag…
 
 ```html
 <link rel="stylesheet" href="dist/basicSlider.min.css">
@@ -61,7 +61,7 @@ Include the CSS-file in the `head` and the JS-file at the end of your `body`…
 <script src="dist/basicSlider.min.js"></script>
 ```
 
-…or skip the JS-file and use basicSlider as a module:
+…or skip the JS file and use basicSlider as a module:
 
 ```js
 const basicSlider = require('basicslider')
@@ -188,7 +188,7 @@ instance.next()
 
 ## Options
 
-The option-object can include the following properties:
+The option object can include the following properties:
 
 ```js
 {
@@ -215,7 +215,7 @@ The option-object can include the following properties:
 
 ## Themes
 
-Layout and theme are separated CSS-files. This makes it easy to style your own slider or to choose from the included themes.
+Layout and theme are separated CSS files. This makes it easy to style your own slider or to choose from the included themes.
 
 | Name | Demo |
 |:-----------|:------------|:------------|:------------|
