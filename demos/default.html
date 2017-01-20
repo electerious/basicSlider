@@ -100,12 +100,12 @@
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="0"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="0"] > div'), function(slide) { return slide.innerHTML })
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="0"] > div'), (slide) => slide.innerHTML)
 		)
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="1"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="1"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="1"] > div'), (slide) => slide.innerHTML),
 			{
 				arrows: false
 			}
@@ -113,24 +113,24 @@
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="2"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="2"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="2"] > div'), (slide) => slide.innerHTML),
 			{
-				beforeChange: function(instance, newIndex, oldIndex) { console.log('beforeChange', instance, newIndex, oldIndex) },
-				afterChange: function(instance, newIndex, oldIndex) { console.log('afterChange', instance, newIndex, oldIndex) }
+				beforeChange : (instance, newIndex, oldIndex) => console.log('beforeChange', instance, newIndex, oldIndex),
+				afterChange  : (instance, newIndex, oldIndex) => console.log('afterChange', instance, newIndex, oldIndex)
 			}
 		)
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="3"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="3"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="3"] > div'), (slide) => slide.innerHTML),
 			{
-				beforeChange: function() { return false }
+				beforeChange: () => false
 			}
 		)
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="4"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="4"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="4"] > div'), (slide) => slide.innerHTML),
 			{
 				index: 1
 			}
@@ -138,7 +138,7 @@
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="5"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="5"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="5"] > div'), (slide) => slide.innerHTML),
 			{
 				dots: false
 			}
@@ -146,10 +146,10 @@
 
 		basicSlider.create(
 			document.querySelector('.slider[data-id="6"]'),
-			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="6"] > div'), function(slide) { return slide.innerHTML }),
+			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="6"] > div'), (slide) => slide.innerHTML),
 			{
-				arrows: false,
-				dots: false
+				arrows : false,
+				dots   : false
 			}
 		)
 
