@@ -218,5 +218,5 @@ The option object can include the following properties:
 Layout and theme are separated CSS files. This makes it easy to style your own slider or to choose from the included themes.
 
 | Name | Demo |
-|:-----------|:------------|:------------|:------------|
+|:-----------|:------------|
 | Default theme | [Demo](http://codepen.io/electerious/pen/GjpXRX) |
