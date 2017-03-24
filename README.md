@@ -20,6 +20,7 @@ A slider in its purest form.
 | Default | All features with the default theme. | [Try it on CodePen](http://codepen.io/electerious/pen/GjpXRX) |
 | Responsive | Responsive slider with dynamic content. | [Try it on CodePen](http://codepen.io/electerious/pen/aJKyxx) |
 | Emoji | Default theme with emojis. | [Try it on CodePen](http://codepen.io/electerious/pen/MpXEVd) |
+| Touch | Slider with swipe support. | [Demo](demos/touch.html) |
 
 ## Features
 

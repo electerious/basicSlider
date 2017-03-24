@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicSlider Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="../dist/basicSlider.min.css">
+	<link rel="stylesheet" href="../dist/themes/default.min.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			min-height: 100%;
+			font-size: 14px;
+			background: #eee;
+			color: white;
+		}
+
+		.content {
+			margin: 0 auto;
+			padding: 1rem;
+			width: 100%;
+			max-width: 800px;
+			box-sizing: border-box;
+		}
+
+		.basicSlider__slide {
+			padding: 4rem 0;
+			text-align: center;
+			background: white;
+			color: black;
+		}
+
+	</style>
+
+	<div class="content">
+
+		<div class="slider">
+			<div>Default</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+
+	</div>
+
+	<script src="../dist/basicSlider.min.js"></script>
+
+	<script>
+
+		const position = (e) => ({
+			x: e.pageX,
+			y: e.pageY
+		})
+
+		const onSwipe = function(elem, callback) {
+
+			const minDistance = 80
+			const maxTime     = 400
+
+			let startTime = null
+			let startPos  = {}
+
+			const start = (e) => {
+
+				startTime = new Date().getTime()
+				startPos  = position(e.changedTouches==null ? e : e.changedTouches[0])
+
+			}
+
+			const move = (e) => {
+
+				// Prevent scrolling
+				e.preventDefault()
+
+			}
+
+			const end = (e) => {
+
+				const currentTime = new Date().getTime()
+				const elapsedTime = currentTime - startTime
+
+				const newPos = position(e.changedTouches==null ? e : e.changedTouches[0])
+
+				const offsetPos = {
+					x: newPos.x - startPos.x,
+					y: newPos.y - startPos.y
+				}
+
+				const directions = {
+					left  : offsetPos.x<=0 ? Math.abs(offsetPos.x) : 0,
+					right : offsetPos.x>=0 ? Math.abs(offsetPos.x) : 0,
+					up    : offsetPos.y<=0 ? Math.abs(offsetPos.y) : 0,
+					down  : offsetPos.y>=0 ? Math.abs(offsetPos.y) : 0
+				}
+
+				const direction = Object.keys(directions).sort((a, b) => {
+					return directions[b] - directions[a]
+				})[0]
+
+				const distance = directions[direction]
+
+				const inDistance = distance>=minDistance
+				const inTime     = elapsedTime<=maxTime
+
+				if (inTime===true && inDistance===true) callback(direction)
+
+			}
+
+			elem.addEventListener('touchstart', start)
+			elem.addEventListener('mousedown', start)
+
+			elem.addEventListener('touchmove', move)
+			elem.addEventListener('mousemove', move)
+
+			elem.addEventListener('touchend', end)
+			elem.addEventListener('mouseup', end)
+
+		}
+
+		const slider = document.querySelector('.slider')
+
+		const instance = basicSlider.create(
+			slider,
+			Array.prototype.map.call(slider.children, (slide, i) => slide.innerHTML)
+		)
+
+		onSwipe(slider, (direction) => {
+
+			if (direction==='left')  instance.next()
+			if (direction==='right') instance.prev()
+
+		})
+
+	</script>
+
+</html>
