@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicSlider Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="../dist/basicSlider.min.css">
+	<link rel="stylesheet" href="../dist/themes/default.min.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			min-height: 100%;
+			font-size: 14px;
+			background: #eee;
+			color: white;
+		}
+
+		.content {
+			margin: 0 auto;
+			padding: 1rem;
+			width: 100%;
+			max-width: 800px;
+			box-sizing: border-box;
+		}
+
+		.basicSlider__slide {
+			display: flex;
+			justify-content: space-around;
+			padding: 1rem 3rem;
+		}
+
+	</style>
+
+	<div class="content">
+
+		<div class="slider">
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+			<div><img src="http://placehold.it/100x100"></div>
+		</div>
+
+	</div>
+
+	<script src="../dist/basicSlider.min.js"></script>
+
+	<script>
+
+		const slider = document.querySelector('.slider')
+		const slides = Array.prototype.map.call(slider.children, (slide, i) => slide.innerHTML)
+
+		const clusterArray = function(arr, itemsPerCluster) {
+
+			return arr.reduce((clusters, item, i) => {
+
+				const cluster  = Math.floor(i / itemsPerCluster)
+				const existing = clusters[cluster]==null ? '' : clusters[cluster]
+
+				clusters[cluster] = existing + item
+
+				return clusters
+
+			}, [])
+
+		}
+
+		const initSlider = function() {
+
+			let currentSlidesPerSlide = null
+
+			return () => {
+
+				let slidesPerSlide = 6
+
+				const width = window.innerWidth || window.outerWidth
+
+				if (width<800) slidesPerSlide = 5
+				if (width<650) slidesPerSlide = 4
+				if (width<550) slidesPerSlide = 3
+				if (width<450) slidesPerSlide = 2
+
+				if (currentSlidesPerSlide===slidesPerSlide) return
+
+				currentSlidesPerSlide = slidesPerSlide
+
+				basicSlider.create(
+					slider,
+					clusterArray(slides, slidesPerSlide)
+				)
+
+			}
+
+		}
+
+		const onResize = function(fn, timeout) {
+
+			let timer = null
+
+			window.addEventListener('resize', () => {
+
+				clearTimeout(timer)
+				timer = setTimeout(fn, timeout)
+
+			})
+
+		}
+
+		const updateSlider = initSlider()
+
+		onResize(updateSlider, 100)
+
+		updateSlider()
+
+	</script>
+
+</html>

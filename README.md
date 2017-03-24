@@ -18,6 +18,7 @@ A slider in its purest form.
 | Name | Description | Link |
 |:-----------|:------------|:------------|
 | Default | All features with the default theme. | [Try it on CodePen](http://codepen.io/electerious/pen/GjpXRX) |
+| Responsive | Responsive slider with dynamic content. | [Try it on CodePen](http://codepen.io/electerious/pen/aJKyxx) |
 
 ## Features
 
