@@ -31,6 +31,6 @@
     "gulp": "^3.9.1"
   },
   "dependencies": {
-    "count-between": "^1.0.3"
+    "count-between": "^1.0.4"
   }
 }
