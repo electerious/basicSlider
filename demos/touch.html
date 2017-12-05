@@ -52,79 +52,10 @@
 
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 	<script src="../dist/basicSlider.min.js"></script>
 
 	<script>
-
-		const position = (e) => ({
-			x: e.pageX,
-			y: e.pageY
-		})
-
-		const onSwipe = function(elem, callback) {
-
-			const minDistance = 80
-			const maxTime     = 400
-
-			let startTime = null
-			let startPos  = {}
-
-			const start = (e) => {
-
-				startTime = new Date().getTime()
-				startPos  = position(e.changedTouches==null ? e : e.changedTouches[0])
-
-			}
-
-			const move = (e) => {
-
-				// Prevent scrolling
-				e.preventDefault()
-
-			}
-
-			const end = (e) => {
-
-				const currentTime = new Date().getTime()
-				const elapsedTime = currentTime - startTime
-
-				const newPos = position(e.changedTouches==null ? e : e.changedTouches[0])
-
-				const offsetPos = {
-					x: newPos.x - startPos.x,
-					y: newPos.y - startPos.y
-				}
-
-				const directions = {
-					left  : offsetPos.x<=0 ? Math.abs(offsetPos.x) : 0,
-					right : offsetPos.x>=0 ? Math.abs(offsetPos.x) : 0,
-					up    : offsetPos.y<=0 ? Math.abs(offsetPos.y) : 0,
-					down  : offsetPos.y>=0 ? Math.abs(offsetPos.y) : 0
-				}
-
-				const direction = Object.keys(directions).sort((a, b) => {
-					return directions[b] - directions[a]
-				})[0]
-
-				const distance = directions[direction]
-
-				const inDistance = distance>=minDistance
-				const inTime     = elapsedTime<=maxTime
-
-				if (inTime===true && inDistance===true) callback(direction)
-
-			}
-
-			elem.addEventListener('touchstart', start)
-			elem.addEventListener('mousedown', start)
-
-			elem.addEventListener('touchmove', move)
-			elem.addEventListener('mousemove', move)
-
-			elem.addEventListener('touchend', end)
-			elem.addEventListener('mouseup', end)
-
-		}
 
 		const slider = document.querySelector('.slider')
 
@@ -133,12 +64,10 @@
 			Array.prototype.map.call(slider.children, (slide, i) => slide.innerHTML)
 		)
 
-		onSwipe(slider, (direction) => {
+		const hammer = new Hammer(slider)
 
-			if (direction==='left')  instance.next()
-			if (direction==='right') instance.prev()
-
-		})
+		hammer.on('swiperight', instance.prev)
+		hammer.on('swipeleft', instance.next)
 
 	</script>
 
