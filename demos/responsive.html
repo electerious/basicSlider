@@ -76,7 +76,7 @@
 
 			return arr.reduce((clusters, item, i) => {
 
-				const cluster  = Math.floor(i / itemsPerCluster)
+				const cluster = Math.floor(i / itemsPerCluster)
 				const existing = clusters[cluster]==null ? '' : clusters[cluster]
 
 				clusters[cluster] = existing + item

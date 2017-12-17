@@ -115,8 +115,8 @@
 			document.querySelector('.slider[data-id="2"]'),
 			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="2"] > div'), (slide) => slide.innerHTML),
 			{
-				beforeChange : (instance, newIndex, oldIndex) => console.log('beforeChange', instance, newIndex, oldIndex),
-				afterChange  : (instance, newIndex, oldIndex) => console.log('afterChange', instance, newIndex, oldIndex)
+				beforeChange: (instance, newIndex, oldIndex) => console.log('beforeChange', instance, newIndex, oldIndex),
+				afterChange: (instance, newIndex, oldIndex) => console.log('afterChange', instance, newIndex, oldIndex)
 			}
 		)
 
@@ -148,8 +148,8 @@
 			document.querySelector('.slider[data-id="6"]'),
 			Array.prototype.map.call(document.querySelectorAll('.slider[data-id="6"] > div'), (slide) => slide.innerHTML),
 			{
-				arrows : false,
-				dots   : false
+				arrows: false,
+				dots: false
 			}
 		)
 

@@ -3,17 +3,14 @@
 	position: relative;
 	width: 100%;
 
-	// Arrow -------------------------------------------------------------- //
 	&__arrow {
 		cursor: pointer;
 	}
 
-	// Dot -------------------------------------------------------------- //
 	&__dot {
 		cursor: pointer;
 	}
 
-	// Container -------------------------------------------------------------- //
 	&__container {
 		position: relative;
 		width: 100%;
@@ -21,7 +18,6 @@
 		overflow: hidden;
 	}
 
-	// Slides -------------------------------------------------------------- //
 	&__slides {
 		position: relative;
 		display: flex;
@@ -30,7 +26,6 @@
 		will-change: transform;
 	}
 
-	// Slide -------------------------------------------------------------- //
 	&__slide {
 		flex: 0 1 auto;
 		width: 100%;

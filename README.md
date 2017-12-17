@@ -101,8 +101,8 @@ const instance = basicSlider.create(document.querySelector('#slider'), [
 	'<p>Slide 2 with HTML</p>',
 	'<p>Slide 3 with HTML</p>'
 ], {
-	index  : 1,
-	arrows : false
+	index: 1,
+	arrows: false
 })
 ```
 
@@ -214,8 +214,8 @@ The option object can include the following properties:
 	 * Callback functions.
 	 * Returning false will stop the caller function and prevent the slider from changing.
 	 */
-	beforeChange  : (instance, newIndex, oldIndex) => {},
-	afterChange   : (instance, newIndex, oldIndex) => {}
+	beforeChange: (instance, newIndex, oldIndex) => {},
+	afterChange: (instance, newIndex, oldIndex) => {}
 }
 ```
 

@@ -1,12 +1,12 @@
-const ARROW_LEFT  = 'left'
-const ARROW_RIGHT = 'right'
-
 import counter from 'count-between'
+
+const ARROW_LEFT = 'left'
+const ARROW_RIGHT = 'right'
 
 const stopEvent = function(e) {
 
 	if (typeof e.stopPropagation==='function') e.stopPropagation()
-	if (typeof e.preventDefault==='function')  e.preventDefault()
+	if (typeof e.preventDefault==='function') e.preventDefault()
 
 }
 
@@ -17,10 +17,10 @@ const validate = function(opts = {}) {
 	if (Number.isFinite(opts.index)===false) opts.index = 0
 
 	if (opts.arrows!==false) opts.arrows = true
-	if (opts.dots!==false)   opts.dots = true
+	if (opts.dots!==false) opts.dots = true
 
 	if (typeof opts.beforeChange!=='function') opts.beforeChange = () => {}
-	if (typeof opts.afterChange!=='function')  opts.afterChange = () => {}
+	if (typeof opts.afterChange!=='function') opts.afterChange = () => {}
 
 	return opts
 
@@ -173,12 +173,12 @@ const init = function(elem, slides, instance, opts) {
 	const refs = {}
 
 	// Render all elements
-	refs.slideElems     = slides.map(renderSlide)
-	refs.dotElems       = slides.map((_, i) => renderDot(instance.goto.bind(null, i)))
-	refs.dotsElem       = renderDots(refs.dotElems)
-	refs.slidesElem     = renderSlides(refs.slideElems)
-	refs.containerElem  = renderContainer(refs.slidesElem)
-	refs.arrowLeftElem  = renderArrow(ARROW_LEFT, instance.prev)
+	refs.slideElems = slides.map(renderSlide)
+	refs.dotElems = slides.map((_, i) => renderDot(instance.goto.bind(null, i)))
+	refs.dotsElem = renderDots(refs.dotElems)
+	refs.slidesElem = renderSlides(refs.slideElems)
+	refs.containerElem = renderContainer(refs.slidesElem)
+	refs.arrowLeftElem = renderArrow(ARROW_LEFT, instance.prev)
 	refs.arrowRightElem = renderArrow(ARROW_RIGHT, instance.next)
 
 	// Set initial slide
@@ -260,12 +260,12 @@ export const create = function(elem, slides, opts) {
 	// Assign instance to a variable so the instance can be used
 	// elsewhere in the current function
 	const instance = {
-		element : _element,
-		length  : _length,
-		current : _current,
-		goto    : _goto,
-		prev    : _prev,
-		next    : _next
+		element: _element,
+		length: _length,
+		current: _current,
+		goto: _goto,
+		prev: _prev,
+		next: _next
 	}
 
 	// Initialize slider
@@ -273,7 +273,7 @@ export const create = function(elem, slides, opts) {
 
 	// Use returned values for initialization as those will be used
 	// in functions of the instance
-	c    = initial.c
+	c = initial.c
 	refs = initial.refs
 
 	return instance
