@@ -5,8 +5,8 @@ const ARROW_RIGHT = 'right'
 
 const stopEvent = function(e) {
 
-	if (typeof e.stopPropagation==='function') e.stopPropagation()
-	if (typeof e.preventDefault==='function') e.preventDefault()
+	if (typeof e.stopPropagation === 'function') e.stopPropagation()
+	if (typeof e.preventDefault === 'function') e.preventDefault()
 
 }
 
@@ -14,13 +14,13 @@ const validate = function(opts = {}) {
 
 	opts = Object.assign({}, opts)
 
-	if (Number.isFinite(opts.index)===false) opts.index = 0
+	if (Number.isFinite(opts.index) === false) opts.index = 0
 
-	if (opts.arrows!==false) opts.arrows = true
-	if (opts.dots!==false) opts.dots = true
+	if (opts.arrows !== false) opts.arrows = true
+	if (opts.dots !== false) opts.dots = true
 
-	if (typeof opts.beforeChange!=='function') opts.beforeChange = () => {}
-	if (typeof opts.afterChange!=='function') opts.afterChange = () => {}
+	if (typeof opts.beforeChange !== 'function') opts.beforeChange = () => {}
+	if (typeof opts.afterChange !== 'function') opts.afterChange = () => {}
 
 	return opts
 
@@ -45,13 +45,13 @@ const renderSlider = function(elem, refs, opts) {
 	elem.appendChild(containerElem)
 
 	// Insert arrows at the end so they stay clickable
-	if (opts.arrows===true) {
+	if (opts.arrows === true) {
 		elem.appendChild(arrowLeftElem)
 		elem.appendChild(arrowRightElem)
 	}
 
 	// Insert dots at the end so they stay clickable
-	if (opts.dots===true) {
+	if (opts.dots === true) {
 		elem.appendChild(dotsElem)
 	}
 
@@ -62,7 +62,7 @@ const renderArrow = function(direction, fn) {
 	const elem = document.createElement('button')
 
 	// Only allow left and right arrows
-	direction = (direction===ARROW_LEFT ? 'left' : 'right')
+	direction = (direction === ARROW_LEFT ? 'left' : 'right')
 
 	// Add the default and direction class
 	elem.classList.add('basicSlider__arrow')
@@ -222,7 +222,7 @@ export const create = function(elem, slides, opts) {
 
 		// Run beforePrev event
 		// Stop execution when function returns false
-		if (opts.beforeChange(instance, newIndex, oldIndex)===false) return false
+		if (opts.beforeChange(instance, newIndex, oldIndex) === false) return false
 
 		// Recreate counter with new initial value
 		c = counter(0, _length() - 1, newIndex)
