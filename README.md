@@ -110,7 +110,7 @@ const instance = basicSlider.create(document.querySelector('#slider'), [
 
 Parameters:
 
-- `elem` `{Node}` The element which should contain the slider.
+- `elem` `{Node}` The DOM element/node which should contain the slider.
 - `slides` `{Array}` Array of strings. Each item represents one slide. Any kind of HTML is allowed.
 - `opts` `{?Object}` An object of [options](#options).
 
@@ -124,7 +124,7 @@ Each basicSlider instance has a handful of handy functions. Below are all of the
 
 ### .element()
 
-Returns the Node object associated with the instance.
+Returns the DOM element/node object associated with the instance.
 
 Example:
 
@@ -134,7 +134,7 @@ const elem = instance.element()
 
 Returns:
 
-- `{Node}` Node object associated with the instance.
+- `{Node}` DOM element/node associated with the instance.
 
 ### .length()
 
