@@ -26,7 +26,7 @@ A slider in its purest form.
 
 ## Features
 
-- Works in all modern browsers
+- Works in all modern browsers and IE11 ([with polyfills](#requirements))
 - Zero dependencies
 - CommonJS and AMD support
 - Works with all kind of content
@@ -37,8 +37,6 @@ A slider in its purest form.
 
 basicSlider depends on the following browser APIs:
 
-- [classList](https://dom.spec.whatwg.org/#dom-element-classlist)
-- [Flexible Box Layout Module](https://www.w3.org/TR/css3-flexbox/)
 - [Object.assign](http://www.ecma-international.org/ecma-262/6.0/#sec-object.assign)
 - [Number.isFinite](http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite)
 
