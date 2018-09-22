@@ -27,11 +27,11 @@ A slider in its purest form.
 ## Features
 
 - Works in all modern browsers and IE11 ([with polyfills](#requirements))
+- Supports any kind of content
+- No fancy shit, just a slider in its purest form
 - Zero dependencies
 - CommonJS and AMD support
-- Works with all kind of content
 - Simple JS API
-- No fancy shit, just a slider in its purest form
 
 ## Requirements
 
