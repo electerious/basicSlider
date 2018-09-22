@@ -71,6 +71,10 @@ Include the CSS file in the `head` tag and the JS file at the end of your `body`
 const basicSlider = require('basicslider')
 ```
 
+```js
+import * as basicSlider from 'basicslider'
+```
+
 ## API
 
 ### .create(elem, slides, opts)
