@@ -44,14 +44,14 @@ Some of these APIs are capable of being polyfilled in older browsers. Check the 
 
 ## Setup
 
-We recommend to install basicSlider using [Bower](https://bower.io/) or [npm](https://npmjs.com).
-
-```sh
-bower install basicSlider
-```
+We recommend to install basicSlider using [npm](https://npmjs.com) or [yarn](https://yarnpkg.com).
 
 ```sh
 npm install basicslider
+```
+
+```sh
+yarn add basicslider
 ```
 
 Include the CSS file in the `head` tag and the JS file at the end of your `body` tag…
