@@ -14,43 +14,43 @@ A Responsive & Touch-friendly Javascript Slider, only 2.01KB gzipped.
 
 ## Setup
 
-1. Include the CSS files in head. Change the path to fit your project directory.
+1. Include the CSS files before `</head>`. Change the path to fit your project directory.
 
-		```html
-		<link rel="stylesheet" href="dist/hslider.min.css">
-		```
+	```html
+	<link rel="stylesheet" href="dist/hslider.min.css">
+	```
 
-1. Include the JS files including jQuery if not added yet.
+1. Include the JS files before `</body>`. You can ignore the jQuery if you already added it.
 
-		```html
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="dist/hslider.min.js"></script>
-		```
+	```html
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="dist/hslider.min.js"></script>
+	```
 
 1. Apply hSlider to the container.
 
-		```html
-		<div class="my-gallery">
-			<img src="...">
-			<img src="...">
-			<img src="...">
-			<img src="...">
-		</div>
-		```
+	```html
+	<div class="my-gallery">
+		<img src="...">
+		<img src="...">
+		<img src="...">
+		<img src="...">
+	</div>
+	```
 
-		```js
-		$(document).ready( function() {
+	```js
+	$(document).ready( function() {
 
-			var instance = $('.my-gallery').hSlider({
-				itemsPerSlide: 3,
-				responsive: {
-					767: 2,
-					480: 1
-				}
-			});
-
+		var instance = $('.my-gallery').hSlider({
+			itemsPerSlide: 3,
+			responsive: {
+				767: 2,
+				480: 1
+			}
 		});
-		```
+
+	});
+	```
 
 ## Options
 
@@ -73,11 +73,11 @@ In example above, we stored the hSlider in `instance` variable. We can use that 
 
 - **.element()** - Returns the DOM element/node object associated with the instance.
 
-		```js
-		var slides = instance.element().querySelector( '.hSlider-slides' );
-		// or use it with jQuery
-		var slides = $( instance.element() ).find( '.hSlider-slides' );
-		```
+	```js
+	var slides = instance.element().querySelector( '.hSlider-slides' );
+	// or use it with jQuery
+	var slides = $( instance.element() ).find( '.hSlider-slides' );
+	```
 
 - **.length()** - Returns the total number of slides.
 
@@ -85,9 +85,9 @@ In example above, we stored the hSlider in `instance` variable. We can use that 
 
 - **.goto( index )** - Navigate to selected slide.
 
-		```js
-		instance.goto( 1 );
-		```
+	```js
+	instance.goto( 1 );
+	```
 
 - **.prev()** - Navigate to previous slide. If currently on first slide, it will go to last slide.
 
