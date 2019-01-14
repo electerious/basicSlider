@@ -1,0 +1,108 @@
+// hSlider v2
+// Forked from: https://github.com/electerious/basicSlider
+  
+@import "setting"
+@import "edje-v20"
+
+
+.hSlider
+  +h( relative w100 p0 )
+
+.hSlider-container
+  +h( relative w100 h100 ov-hidden )
+
+.hSlider-slides
+  +h( relative d-flex h100 transition select-none )
+  will-change: transform
+  -webkit-tap-highlight-color: transparent
+
+.hSlider-slide
+  +h( d-flex ai-start flex1 w100 h100 )
+
+.hSlider-slide > *
+  +h( w100 )
+
+  .per-slide-2 &
+    +h( w50 )
+  
+  .per-slide-3 &
+    +h( w33 )
+
+  .per-slide-4 &
+    +h( w25 )
+
+  .per-slide-5 &
+    +h( w20 )
+
+  .per-slide-6 &
+    width: calc( 100% / 6 )
+
+  .per-slide-7 &
+    width: calc( 100% / 7 )
+  
+  .per-slide-8 &
+    width: calc( 100% / 8 )
+
+.hSlider
+  +h( mb3 )
+
+
+// Arrow
+.hSlider-arrow
+  +h( cursor-pointer absolute top50 p0 b0 o40 )
+  +h( c-white ta-center brad-circle transition )
+  width: 30px
+  height: 30px
+  background: $font-color
+
+  +transform( translateY(-50%) )
+  
+  &::before
+    font-size: 1.5rem
+    line-height: 30px
+
+.hSlider-arrow:hover,
+  +h( o100 )
+
+.hSlider-arrow--left
+  left: 6px
+  text-indent: -2px
+
+  &::before
+    content: "‹"
+
+.hSlider-arrow--right
+  right: 6px
+  text-indent: 2px
+  
+  &::before
+    content: "›"
+
+
+// Dots
+.hSlider-dots
+  +h( absolute d-flex jc-center ai-center top100 w100 )
+  height: 2rem
+
+  button
+    +h( cursor-pointer )
+
+.hSlider-dot
+  +h( b0 o40 transition )
+  padding: 6px
+  flex: 0 0 auto
+  background: 0 0
+
+  &::before
+    content: ''
+    +h( d-block b0 brad-circle )
+    padding: 6px
+    background: $font-color
+
+  &:hover,
+  &.active
+    +h( o100 )
+
+  &.active::before
+    border-color: $font-color
+    box-shadow: 0 0 0 2px 

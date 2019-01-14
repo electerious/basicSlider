@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- WEBSITE DETAIL -->
+  <title>hSlider Demo</title>
+  <meta name="theme-color" content="#00aadc">
+  <meta name="description" content="A Responsive & Touch-friendly Javascript Slider, only 2.01KB gzipped.">
+
+  <!-- STYLESHEET -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="src/hslider.css">
+
+  <style>
+    main {
+      padding: 3rem 10px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    
+  </style>
+
+</head>
+<body>
+
+<main>
+  
+  <div id="my-gallery">
+    <img src="https://picsum.photos/400/300?image=1043">
+    <img src="https://picsum.photos/400/300?image=1039">
+    <img src="https://picsum.photos/400/300?image=1044">
+    <img src="https://picsum.photos/400/300?image=1036">
+    <img src="https://picsum.photos/400/300?image=1044">
+    <img src="https://picsum.photos/400/300?image=1015">
+    <img src="https://picsum.photos/400/300?image=987">
+    <img src="https://picsum.photos/400/300?image=980">
+  </div>
+
+</main>
+
+
+<!-- JAVASCRIPT LIBRARY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="src/hslider.js"></script>
+<script>
+$(document).ready( function() {
+
+  var instance = $('#my-gallery').hSlider({
+    index: 0, // starting slide
+    arrows: true,
+    dots: true,
+    touch: true,
+    itemsPerSlide: 3,
+    responsive: {
+      767: 2, // 2 items when 767px or below
+      480: 1  // 1 item when 480px or below
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>

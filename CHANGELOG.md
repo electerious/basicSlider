@@ -1,21 +1,10 @@
-# Changelog
+## 2.0.0
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-
-## [1.1.2] - 2017-12-17
-
-### Changed
-
-- Syntax of JS and SCSS files
-
-## [1.1.1] - 2017-08-08
-
-### Added
-
-- Added a changelog
-
-### Changed
-
-- Ignore `yarn.lock` and `package-lock.json` files
+- Forked from basicSlider.
+- Added jQuery extension `hSlider` that wraps basicSlider.
+- Added `itemsPerSlide` options to set how many items in one slide. Default is 1.
+- Added `responsive` options to adapt items-per-slide in certain breakpoints. Default is null.
+- Added swipe gesture.
+- Added `touch` options to enable / disable swipe gesture. Default is true.
+- Changed the CSS to fit new naming.
+- Changed the transition to ease-in-out which make it smoother.

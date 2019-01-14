@@ -1,0 +1,459 @@
+// Customize the framework by changing these variables
+// Put your custom variables and mixins here too
+
+///// FONT FAMILY
+$font-family : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+$font-family-header : "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times","Source Serif Pro", serif;
+
+// Automatically create @font-face declaration
+$font-faces: (
+//   'Sample Font': (
+//     ("font.woff", 400),
+//     ("font-italic.woff", 400, italic),
+//     ("font-bold.woff", 700),
+//   ),
+);
+
+///// COLOR
+$main : #2196f3;
+$main-dark : darken($main, 10%);
+$main-light : lighten($main, 10%);
+
+$sub  : #607d8b;
+$sub-dark: darken($sub, 10%);
+$sub-light: lighten($sub, 10%);
+
+// $color-link : #0366d6;
+// $color-link-hover : lighten($color-link, 10%);
+
+$gray : #e0e0e0;
+$gray-dark: #b0bcc4;
+$gray-light: #f3f6f8;
+
+$red : #f45b4f;
+$yellow : #ffeb3b;
+$green : #4caf50;
+$blue: #2196f3;
+
+$body-background: #fff;
+$text-highlight: null; // change highlight background
+
+
+///// SIZING
+$size-xs : 480px;
+$size-s  : 767px;
+$size-m  : 960px;
+$size-l  : 1120px;
+
+$below-nav-s: "max-width:#{ $size-s }"; // mobile navigation breakpoint
+$above-nav-s: "min-width:#{ $size-s + 1px }";
+
+
+///// GLOBAL VALUE
+$g-radius     : 4px;
+// $g-transition : all .25s ease-in-out;
+
+
+///// GRID
+$grid-max-width : $size-m;
+// $grid-columns   : 12;
+// $grid-gap       : 20px; // distance between columns
+// $grid-rim       : 10px; // distance from edge of screen
+
+
+///// TILE
+// $tile-max  : 8;
+// $tile-gap  : 20px;
+
+
+///// TYPOGRAPHY
+$font-color : #222;
+$font-gray : #888;
+
+// $font-weight : 400;
+// $font-line : 1.65;
+$font-size : 16px;
+
+// $header-color  : $font-color;
+// $header-weight : 700;
+// $header-line   : 1.25;
+// $header-spacing : 0;
+// $header-transform : none;
+
+$h1: (base: 42px,  s: 30px);
+$h2: (base: 36px,  s: 26px);
+$h3: (base: 30px,  s: 22px);
+$h4: (base: 24px,  s: 20px);
+$h5: (base: 20px,  s: 18px);
+$h6: (base: $font-size,  s: $font-size);
+
+
+///// CUSTOM MIXIN
+
+$spinner_path: '../../../../../wp-admin/images/spinner.gif';
+
+@mixin your-custom-mixin() { }
+
+
+///// FUNCTIONAL SASS /////
+
+$h-custom: (
+  example: ( padding: 0.5rem 1rem ),
+);
+
+// LAYOUT -----
+
+// $h-height: (
+//   names: ( h: height ),
+//   values: (
+//     '-auto': auto,
+//     25: 25%,
+//     33: calc(100% / 3),
+//     50: 50%,
+//     66: calc(100% / 1.5),
+//     75: 75%,
+//     100: 100%,
+//     100vh: 100vh,
+//   )
+// );
+
+
+
+// $h-width: (
+//   names: ( w: width ),
+//   values: (
+//     '-auto': auto,
+//     10: 10%,
+//     20: 20%,
+//     25: 25%,
+//     30: 30%,
+//     33: calc(100% / 3),
+//     40: 40%,
+//     50: 50%,
+//     60: 60%,
+//     66: calc(100% / 1.5),
+//     70: 70%,
+//     75: 75%,
+//     80: 80%,
+//     90: 90%,
+//     100: 100%,
+//     100vw: 100vw,
+//   )
+// );
+
+
+
+// $h-position-move: (
+//   names: (
+//     top: top,
+//     right: right,
+//     bottom: bottom,
+//     left: left
+//   ),
+//   values: (
+//     0: 0,
+//     50: 50%,
+//     100: 100%,
+//     '-auto': auto,
+//   )
+// );
+
+// $h-z-index: (
+//   names: ( z: z-index ),
+//   values: (
+//     '-1': -1,
+//     2: 2,
+//     5: 5,
+//     10: 10,
+//     50: 50,
+//     100: 100,
+//   )
+// );
+
+
+// SPACING -----
+
+// $h-padding: (
+//   names: (
+//     p: padding,
+//     pv: ( padding-top, padding-bottom ),
+//     ph: ( padding-right, padding-left ),
+//     pt: padding-top,
+//     pr: padding-right,
+//     pb: padding-bottom,
+//     pl: padding-left,
+//   ),
+//   values: (
+//     0: 0,
+//     '025': 0.25rem,
+//     '05': 0.5rem,
+//     '075': 0.75rem,
+//     1: 1rem,
+//     125: 1.25rem,
+//     15: 1.5rem,
+//     2: 2rem,
+//     25: 2.5rem,
+//     3: 3rem,
+//     4: 4rem,
+//   ),
+// );
+
+// $h-margin: (
+//   names: (
+//     m: margin,
+//     mv: ( margin-top, margin-bottom ),
+//     mh: ( margin-right, margin-left ),
+//     mt: margin-top,
+//     mr: margin-right,
+//     mb: margin-bottom,
+//     ml: margin-left,
+//   ),
+//   values: (
+//     '-auto': auto,
+//     0: 0,
+//     '025': 0.25rem,
+//     '05': 0.5rem,
+//     '075': 0.75rem,
+//     1: 1rem,
+//     125: 1.25rem,
+//     15: 1.5rem,
+//     2: 2rem,
+//     25: 2.5rem,
+//     3: 3rem,
+//     4: 4rem,
+//   )
+// );
+
+// $h-border: (
+//   names: (
+//     b: border,
+//     bt: border-top,
+//     bl: border-left,
+//     br: border-right,
+//     bb: border-bottom,
+//   ),
+//   values: (
+//     '-none': none,
+//     '1-solid': 1px solid,
+//     '1-dashed': 1px dashed,
+//     '2-solid': 2px solid,
+//     '2-dashed': 2px dashed,
+//   )
+// );
+
+// $h-border-color: (
+//   names: ( bc-: border-color ),
+//   values: (
+//     transparent: transparent,
+//     main: $main,
+//     main-dark: $main-dark,
+//     main-light: $main-light,
+    
+//     sub: $sub,
+//     sub-dark: $sub-dark,
+//     sub-light: $sub-light,
+
+//     gray: $gray,
+//     gray-dark: $gray-dark,
+//     gray-light: $gray-light,
+
+//     black: black,
+//     black75: rgba(black, .75),
+//     black50: rgba(black, .50),
+//     black25: rgba(black, .25),
+//     black10: rgba(black, .10),
+//     black05: rgba(black, .05),
+
+//     white: white,
+//     white75: rgba(white, .75),
+//     white50: rgba(white, .50),
+//     white25: rgba(white, .25),
+//     white10: rgba(white, .10),
+//     white05: rgba(white, .05),
+//   )
+// );
+
+// $h-border-radius: (
+//   brad: ( border-radius: $g-radius ),
+//   brad-circle: ( border-radius: 50% ),
+//   brad-pill: ( border-radius: 999px ),
+//   brad0: ( border-radius: 0 ),
+// );
+
+
+// TYPOGRAPHY -----
+
+$h-font-size: (
+  names: ( fs-: font-size ),
+  values: (
+    h1: '%h1',
+    h2: '%h2',
+    h3: '%h3',
+    h4: '%h4',
+    h5: '%h5',
+    h6: '%h6',
+    body: $font-size,
+    s: 0.875em,
+    m: 1.125em,
+  ),
+);
+
+// $h-color: (
+//   names: ( c-: color ),
+//   values: (
+//     body: $font-color,
+//     passive: $font-passive,
+//     inherit: inherit,
+
+//     main: $main,
+//     main75: rgba($main, .75),
+//     main50: rgba($main, .5),
+//     main-dark: $main-dark,
+//     main-light: $main-light,
+
+//     sub: $sub,
+//     sub-dark: $sub-dark,
+//     sub-light: $sub-light,
+
+//     red: $red,
+//     green: $green,
+//     blue: $blue,
+//     yellow: $yellow,
+
+//     black: black,
+//     black75: rgba(black, .75),
+//     black50: rgba(black, .5),
+
+//     white: white,
+//     white75: rgba(white, .75),
+//     white50: rgba(white, .5),
+//   ),
+// );
+
+// $h-letter-spacing: (
+//   names: ( ls: letter-spacing ),
+//   values: (
+//     '-100': -0.1em,
+//     '-50': -0.05em,
+//     '-25': -0.025em,
+//     0: 0,
+//     25: 0.025em,
+//     50: 0.05em,
+//     75: 0.075em,
+//     100: 0.1em,
+//     150: 0.15em
+//   )
+// );
+
+// $h-font-family: (
+//   names: ( ff-: font-family ),
+//   values: (
+//     body: $font-family,
+//     header: $font-family-header
+//   )
+// );
+
+// $h-line-height: (
+//   names: ( lh-: line-height ),
+//   values: (
+//     base: 1,
+//     normal: normal,
+//     body: $font-line,
+//     header: $header-line,
+//   )
+// );
+
+
+///// THEME -----
+
+// $h-background-color: (
+//   names: ( bg-: background-color ),
+//   values: (
+//     body: $body-background,
+//     transparent: transparent,
+    
+//     main: $main,
+//     main75: rgba($main, .75),
+//     main50: rgba($main, .50),
+//     main25: rgba($main, .25),
+//     main10: rgba($main, .10),
+//     main05: rgba($main, .05),
+//     main-dark: $main-dark,
+//     main-light: $main-light,
+    
+//     sub: $sub,
+//     sub-dark: $sub-dark,
+//     sub-light: $sub-light,
+    
+//     gray: $gray,
+//     gray-dark: $gray-dark,
+//     gray-light: $gray-light,
+
+//     red: $red,
+//     blue: $blue,
+//     yellow: $yellow,
+//     green: $green,
+
+//     black: black,
+//     black75: rgba(black, .75),
+//     black50: rgba(black, .50),
+//     black25: rgba(black, .25),
+//     black10: rgba(black, .10),
+//     black05: rgba(black, .05),
+
+//     white: white,
+//     white75: rgba(white, .75),
+//     white50: rgba(white, .50),
+//     white25: rgba(white, .25),
+//     white10: rgba(white, .10),
+//     white05: rgba(white, .05),
+//   )
+// );
+
+
+// $h-background-image: (
+//   names: ( bg-: background-image ),
+//   values: ()
+// );
+
+// $h-opacity: (
+//   names: ( o: opacity ),
+//   values: (
+//     100: 1,
+//     90: .9,
+//     80: .8,
+//     70: .7,
+//     60: .6,
+//     50: .5,
+//     0: 0,
+//   )
+// );
+
+// $h-shadow: (
+//   names: ( shadow: box-shadow ),
+//   values: (
+//     0: $shadow-z0,
+//     1: $shadow-z1,
+//     2: $shadow-z2,
+//     3: $shadow-z3,
+//     '-none': none,
+//   )
+// );
+
+// $h-hover: (
+//   hover-dim: (
+//     ':hover': ( opacity: .6 ),
+//     ':active': ( opacity: .8 ),
+//   ),
+//   hover-grow: (
+//     ':hover': ( '-webkit-transform': scale(1.05), transform: scale(1.05) ),
+//     ':active': ( '-webkit-transform': scale(1), transform: scale(1) ),
+//   ),
+//   hover-u: ( ':hover': ( text-decoration: underline ) ),
+// );
+
+
+// $h-transition: (
+//   transition: ( transition: $g-transition ),
+// );

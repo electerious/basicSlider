@@ -1,36 +1,30 @@
 {
-  "name": "basicslider",
-  "moduleName": "basicSlider",
-  "version": "1.1.2",
+  "name": "hslider",
+  "moduleName": "hSlider",
+  "version": "2.0.0",
   "authors": [
-    "Tobias Reich <tobias@electerious.com>"
+    "Henner Setyono <henner@setyono.net>"
   ],
-  "description": "A slider in its purest form.",
-  "main": "dist/basicSlider.min.js",
+  "description": "A Responsive & Touch-friendly Javascript Slider, only 2.01KB gzipped.",
+  "main": "dist/hslider.min.js",
   "keywords": [
     "slider",
     "slides",
     "carousel"
   ],
-  "scripts": {
-    "start": "gulp watch",
-    "compile": "gulp"
-  },
   "license": "MIT",
-  "homepage": "https://github.com/electerious/basicSlider",
+  "homepage": "https://github.com/hrsetyono/hSlider",
   "repository": {
     "type": "git",
-    "url": "https://github.com/electerious/basicSlider.git"
+    "url": "https://github.com/hrsetyono/hSlider.git"
   },
   "files": [
     "dist",
     "src"
   ],
-  "devDependencies": {
-    "@electerious/basictasks": "4.0.0",
-    "gulp": "^3.9.1"
-  },
-  "dependencies": {
-    "count-between": "^1.0.5"
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "sass": "FOR /f \"delims=\" %v IN ('node -p \"require('edje').includePaths()[0]\"') DO node-sass -w src -o src --output-style compact --include-path \"%v\" "
   }
 }
