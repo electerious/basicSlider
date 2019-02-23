@@ -1,6 +1,5 @@
 {
   "name": "basicslider",
-  "moduleName": "basicSlider",
   "version": "1.1.2",
   "authors": [
     "Tobias Reich <tobias@electerious.com>"
@@ -13,8 +12,7 @@
     "carousel"
   ],
   "scripts": {
-    "start": "gulp watch",
-    "compile": "gulp"
+    "build": "node build.js"
   },
   "license": "MIT",
   "homepage": "https://github.com/electerious/basicSlider",
@@ -26,11 +24,11 @@
     "dist",
     "src"
   ],
-  "devDependencies": {
-    "@electerious/basictasks": "4.0.0",
-    "gulp": "^3.9.1"
-  },
   "dependencies": {
-    "count-between": "^1.0.5"
+    "count-between": "^2.0.0"
+  },
+  "devDependencies": {
+    "rosid-handler-js": "^12.0.1",
+    "rosid-handler-sass": "^6.0.4"
   }
 }
