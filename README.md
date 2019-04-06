@@ -148,7 +148,7 @@ const length = instance.length()
 
 Returns:
 
-- `{Integer}` Total number of slides.
+- `{Number}` Total number of slides.
 
 ### .current()
 
@@ -162,7 +162,7 @@ const current = instance.current()
 
 Returns:
 
-- `{Integer}` Current slide index.
+- `{Number}` Current slide index.
 
 ### .goto()
 
