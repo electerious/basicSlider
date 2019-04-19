@@ -258,7 +258,7 @@ export const create = function(elem, slides, opts) {
 	}
 
 	// Assign instance to a variable so the instance can be used
-	// elsewhere in the current function
+	// elsewhere in the current function.
 	const instance = {
 		element: _element,
 		length: _length,
