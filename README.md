@@ -164,7 +164,7 @@ Returns:
 
 - `{Number}` Current slide index.
 
-### .goto()
+### .goto(newIndex)
 
 Navigates to a slide by index and executes the beforeChange and afterChange callback functions.
 
@@ -173,6 +173,10 @@ Example:
 ```js
 instance.goto(0)
 ```
+
+Parameters:
+
+- `newIndex` `{Number}` Index of the new slide.
 
 ### .prev()
 
