@@ -176,7 +176,7 @@ instance.goto(0)
 
 Parameters:
 
-- `newIndex` `{Number}` Index of the new slide.
+- `newIndex` `{Number}` Index of the slide to be displayed.
 
 ### .prev()
 
