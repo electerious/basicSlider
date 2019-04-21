@@ -37,8 +37,9 @@ A slider in its purest form.
 
 basicSlider depends on the following browser APIs:
 
-- [Object.assign](http://www.ecma-international.org/ecma-262/6.0/#sec-object.assign)
-- [Number.isFinite](http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite)
+- [Node​List​.prototype​.for​Each](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach)
+- [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite)
+- [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 Some of these APIs are capable of being polyfilled in older browsers. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.
 
