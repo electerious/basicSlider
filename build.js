@@ -1,10 +1,8 @@
 'use strict'
 
-const { writeFile } = require('fs')
-const { promisify } = require('util')
+const { writeFile } = require('fs').promises
 const js = require('rosid-handler-js')
 const sass = require('rosid-handler-sass')
-const save = promisify(writeFile)
 
 sass('src/styles/main.scss', {
 
@@ -12,7 +10,7 @@ sass('src/styles/main.scss', {
 
 }).then((data) => {
 
-	return save('dist/basicSlider.min.css', data)
+	return writeFile('dist/basicSlider.min.css', data)
 
 })
 
@@ -22,7 +20,7 @@ sass('src/styles/themes/default.scss', {
 
 }).then((data) => {
 
-	return save('dist/themes/default.min.css', data)
+	return writeFile('dist/themes/default.min.css', data)
 
 })
 
@@ -40,6 +38,6 @@ js('src/scripts/main.js', {
 
 }).then((data) => {
 
-	return save('dist/basicSlider.min.js', data)
+	return writeFile('dist/basicSlider.min.js', data)
 
 })
