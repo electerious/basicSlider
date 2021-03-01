@@ -25,7 +25,7 @@
     "src"
   ],
   "dependencies": {
-    "count-between": "^2.0.2"
+    "count-between": "^3.0.0"
   },
   "devDependencies": {
     "rosid-handler-js": "^13.0.2",
